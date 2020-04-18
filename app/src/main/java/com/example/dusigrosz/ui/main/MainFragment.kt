@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.example.dusigrosz.R
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MainFragment : Fragment() {
