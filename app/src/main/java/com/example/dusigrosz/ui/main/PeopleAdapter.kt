@@ -39,5 +39,4 @@ class PeopleAdapter(
     override fun getCount(): Int {
         return dataSource.size
     }
-
 }
