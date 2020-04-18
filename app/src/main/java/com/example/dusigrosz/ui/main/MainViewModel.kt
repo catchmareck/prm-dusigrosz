@@ -17,8 +17,8 @@ class MainViewModel : ViewModel() {
         return people
     }
 
-    fun getPerson(id: Int): Person {
-        return people.first { p: Person -> p.id == id }
+    fun getPerson(position: Int): Person {
+        return people[position]
     }
 
     fun addPerson(name: String, debt: Double) {

@@ -1,3 +1,5 @@
 package com.example.dusigrosz.ui.main
 
-class Person(var id: Int, var name: String, var debt: Double)
+import java.io.Serializable
+
+class Person(var id: Int, var name: String, var debt: Double): Serializable
