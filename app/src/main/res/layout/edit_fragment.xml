@@ -7,14 +7,52 @@
     android:layout_height="match_parent"
     tools:context=".ui.edit.EditFragment">
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button_simulate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499">
+
+        <EditText
+            android:id="@+id/person_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/person_debt_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/button_save_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_simulate"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="EditFragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

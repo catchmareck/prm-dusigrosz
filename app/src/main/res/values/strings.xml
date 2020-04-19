@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Dusigrosz</string>
+    <string name="button_add_person_text">Dodaj osobę</string>
+    <string name="debt_sum_label_text">Suma długów: %1$s%2$s</string>
+    <string name="currency_label">zł</string>
+    <string name="list_item_debt_text">%1$s%2$s</string>
+
+    <string name="person_delete_dialog_title">Jesteś pewien?</string>
+    <string name="person_delete_dialog_message">Chcesz usunąć %1$s z listy dłużników?</string>
+    <string name="person_delete_dialog_positive_text">Tak</string>
+    <string name="person_delete_dialog_negative_text">Nie</string>
+
+    <string name="person_name_input_placeholder">Podaj imię</string>
+    <string name="person_debt_input_placeholder">Wpisz dług</string>
+    <string name="button_save_person_text">Zapisz</string>
+    <string name="button_simulate_text">Symuluj spłatę</string>
 </resources>

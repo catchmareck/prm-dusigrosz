@@ -23,7 +23,7 @@ class PeopleAdapter(
 
         val person: Person = getItem(position)
         personNameTextView.text = person.name
-        personDebtTextView.text = person.debt.toString()
+        personDebtTextView.text = context.getString(R.string.list_item_debt_text, person.debt.toString(), context.getString(R.string.currency_label))
 
         return rowView
     }

@@ -21,6 +21,10 @@ class MainViewModel : ViewModel() {
         return people[position]
     }
 
+    fun getDebtSum(): Double {
+        return people.sumByDouble { person: Person -> person.debt }
+    }
+
     fun addPerson(name: String, debt: Double) {
         people.add(Person(Random.nextInt(), name, debt))
     }
@@ -29,8 +33,8 @@ class MainViewModel : ViewModel() {
         people.add(person)
     }
 
-    fun deletePerson(id: Int) {
-        people.removeIf { p: Person -> p.id == id }
+    fun deletePerson(position: Int) {
+        people.removeAt(position)
     }
 
     fun deletePerson(person: Person) {
