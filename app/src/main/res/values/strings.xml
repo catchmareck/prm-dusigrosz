@@ -13,5 +13,11 @@
     <string name="person_name_input_placeholder">Podaj imię</string>
     <string name="person_debt_input_placeholder">Wpisz dług</string>
     <string name="button_save_person_text">Zapisz</string>
+    <string name="button_clear_text">Wyczyść</string>
     <string name="button_simulate_text">Symuluj spłatę</string>
+
+    <string name="form_clear_dialog_title">Jesteś pewien?</string>
+    <string name="form_clear_dialog_message">Chcesz porzucić zmiany?</string>
+    <string name="form_clear_dialog_positive_text">Tak</string>
+    <string name="form_clear_dialog_negative_text">Nie</string>
 </resources>

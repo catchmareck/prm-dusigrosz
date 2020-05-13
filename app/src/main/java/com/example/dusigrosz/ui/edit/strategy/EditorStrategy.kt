@@ -8,5 +8,7 @@ abstract class EditorStrategy(val view: View, val fragment: EditFragment, val vi
 
     abstract fun initForm()
 
+    abstract fun clearForm()
+
     abstract fun savePerson()
 }

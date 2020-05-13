@@ -11,6 +11,10 @@ class CreateEditorStrategy(view: View, fragment: EditFragment, viewModel: EditVi
         fragment.personDebtInput.setText("")
     }
 
+    override fun clearForm() {
+        initForm()
+    }
+
     override fun savePerson() {
         val newName: String = fragment.personNameInput.text.toString()
         val newDebt: Double = fragment.personDebtInput.text.toString().toDouble()

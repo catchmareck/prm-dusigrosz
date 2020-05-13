@@ -1,5 +1,6 @@
 package com.example.dusigrosz.ui.edit
 
+import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ class EditFragment : Fragment() {
     lateinit var personNameInput: EditText
     lateinit var personDebtInput: EditText
     lateinit var buttonSave: Button
+    lateinit var buttonClear: Button
     lateinit var buttonSimulate: Button
 
     companion object {
@@ -43,6 +45,7 @@ class EditFragment : Fragment() {
         personNameInput = view.findViewById(R.id.person_name_input)
         personDebtInput = view.findViewById(R.id.person_debt_input)
         buttonSave = view.findViewById(R.id.button_save_person)
+        buttonClear = view.findViewById(R.id.button_clear_text)
         buttonSimulate = view.findViewById(R.id.button_simulate)
 
         viewModel = ViewModelProviders.of(this).get(EditViewModel::class.java)
@@ -51,6 +54,7 @@ class EditFragment : Fragment() {
         personDebtInput.hint = getString(R.string.person_debt_input_placeholder)
         buttonSave.text = getString(R.string.button_save_person_text)
         buttonSimulate.text = getString(R.string.button_simulate_text)
+        buttonClear.text = getString(R.string.button_clear_text)
 
         val action: PersonAction = activity?.intent?.getSerializableExtra("action") as PersonAction
         setStrategy(action, view)
@@ -61,6 +65,7 @@ class EditFragment : Fragment() {
         }
 
         bindSaveButtonEvents()
+        bindClearButtonEvents()
     }
 
     private fun setStrategy(action: PersonAction, view: View) {
@@ -70,6 +75,13 @@ class EditFragment : Fragment() {
     private fun bindSaveButtonEvents() {
         buttonSave.setOnClickListener {
             strategy.savePerson()
+            activity!!.finish()
+        }
+    }
+
+    private fun bindClearButtonEvents() {
+        buttonClear.setOnClickListener {
+            strategy.clearForm()
         }
     }
 }
