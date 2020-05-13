@@ -13,4 +13,8 @@ class EditViewModel : ViewModel() {
     fun updatePerson(name: String, debt: Double) {
         peopleRepository.updatePerson(person, name, debt)
     }
+
+    fun addPerson(name: String, debt: Double) {
+        peopleRepository.addPerson(name, debt)
+    }
 }

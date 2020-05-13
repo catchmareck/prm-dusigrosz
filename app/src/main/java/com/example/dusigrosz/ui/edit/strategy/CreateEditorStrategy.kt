@@ -12,6 +12,9 @@ class CreateEditorStrategy(view: View, fragment: EditFragment, viewModel: EditVi
     }
 
     override fun savePerson() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val newName: String = fragment.personNameInput.text.toString()
+        val newDebt: Double = fragment.personDebtInput.text.toString().toDouble()
+
+        viewModel.addPerson(newName, newDebt)
     }
 }
