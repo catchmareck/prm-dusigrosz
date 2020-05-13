@@ -12,6 +12,7 @@ import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import com.example.dusigrosz.EditActivity
 import com.example.dusigrosz.R
 import com.example.dusigrosz.ui.PersonAction
@@ -51,10 +52,19 @@ class MainFragment : Fragment() {
         setDebtSumText()
         bindListViewEvents(view)
         bindAddPersonButtonEvents(view)
+
+        viewModel.getPeople().observe(
+            viewLifecycleOwner,
+            Observer<ArrayList<Person>> {
+                arrayAdapter.notifyDataSetChanged()
+                setDebtSumText()
+                initializeListView(view)
+            }
+        )
     }
 
     private fun initializeListView(view: View) {
-        arrayAdapter = PeopleAdapter(view.context, viewModel.getPeople() as ArrayList<Person>)
+        arrayAdapter = PeopleAdapter(view.context, viewModel.getPeople().value as ArrayList<Person>)
         peopleList.adapter = arrayAdapter
     }
 
@@ -79,8 +89,6 @@ class MainFragment : Fragment() {
 
             builder.setPositiveButton(getString(R.string.person_delete_dialog_positive_text)){_, _ ->
                 viewModel.deletePerson(person)
-                arrayAdapter.notifyDataSetChanged()
-                setDebtSumText()
             }
 
             builder.setNegativeButton(getString(R.string.person_delete_dialog_negative_text)) {dialog, _ -> dialog.cancel() }

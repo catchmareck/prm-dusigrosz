@@ -13,6 +13,7 @@ import com.example.dusigrosz.ui.PersonAction
 import com.example.dusigrosz.ui.edit.strategy.CreateEditorStrategy
 import com.example.dusigrosz.ui.edit.strategy.EditorStrategy
 import com.example.dusigrosz.ui.edit.strategy.UpdateEditorStrategy
+import com.example.dusigrosz.ui.main.Person
 
 class EditFragment : Fragment() {
 
@@ -55,11 +56,15 @@ class EditFragment : Fragment() {
         setStrategy(action, view)
         strategy.initForm()
 
+        if (action == PersonAction.EDIT_PERSON) {
+            viewModel.person = activity?.intent?.getSerializableExtra("person") as Person
+        }
+
         bindSaveButtonEvents()
     }
 
     private fun setStrategy(action: PersonAction, view: View) {
-        strategy = if (action == PersonAction.CREATE_PERSON) CreateEditorStrategy(view, this) else UpdateEditorStrategy(view, this)
+        strategy = if (action == PersonAction.CREATE_PERSON) CreateEditorStrategy(view, this, viewModel) else UpdateEditorStrategy(view, this, viewModel)
     }
 
     private fun bindSaveButtonEvents() {
