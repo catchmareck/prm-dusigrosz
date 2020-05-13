@@ -23,6 +23,7 @@ class EditFragment : Fragment() {
     lateinit var buttonSave: Button
     lateinit var buttonClear: Button
     lateinit var buttonSimulate: Button
+    lateinit var buttonNotify: Button
 
     companion object {
         fun newInstance() = EditFragment()
@@ -47,6 +48,7 @@ class EditFragment : Fragment() {
         buttonSave = view.findViewById(R.id.button_save_person)
         buttonClear = view.findViewById(R.id.button_clear_text)
         buttonSimulate = view.findViewById(R.id.button_simulate)
+        buttonNotify = view.findViewById(R.id.button_notify)
 
         viewModel = ViewModelProviders.of(this).get(EditViewModel::class.java)
 
@@ -55,6 +57,7 @@ class EditFragment : Fragment() {
         buttonSave.text = getString(R.string.button_save_person_text)
         buttonSimulate.text = getString(R.string.button_simulate_text)
         buttonClear.text = getString(R.string.button_clear_text)
+        buttonNotify.text = getString(R.string.button_notify_text)
 
         val action: PersonAction = activity?.intent?.getSerializableExtra("action") as PersonAction
         setStrategy(action, view)
@@ -62,6 +65,9 @@ class EditFragment : Fragment() {
 
         if (action == PersonAction.EDIT_PERSON) {
             viewModel.person = activity?.intent?.getSerializableExtra("person") as Person
+        } else {
+            buttonSimulate.isEnabled = false
+            buttonNotify.isEnabled = false
         }
 
         bindSaveButtonEvents()

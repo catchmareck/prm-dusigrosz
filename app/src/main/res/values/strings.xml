@@ -15,6 +15,7 @@
     <string name="button_save_person_text">Zapisz</string>
     <string name="button_clear_text">Wyczyść</string>
     <string name="button_simulate_text">Symuluj spłatę</string>
+    <string name="button_notify_text">Powiadom</string>
 
     <string name="form_clear_dialog_title">Jesteś pewien?</string>
     <string name="form_clear_dialog_message">Chcesz porzucić zmiany?</string>

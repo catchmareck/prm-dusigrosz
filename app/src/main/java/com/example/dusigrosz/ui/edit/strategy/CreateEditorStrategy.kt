@@ -8,7 +8,7 @@ class CreateEditorStrategy(view: View, fragment: EditFragment, viewModel: EditVi
 
     override fun initForm() {
         fragment.personNameInput.setText("")
-        fragment.personDebtInput.setText("")
+        fragment.personDebtInput.setText("0")
     }
 
     override fun clearForm() {
