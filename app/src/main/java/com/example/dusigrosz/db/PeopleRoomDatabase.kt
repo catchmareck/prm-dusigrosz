@@ -31,7 +31,7 @@ abstract class PeopleRoomDatabase: RoomDatabase() {
                     context.applicationContext,
                     PeopleRoomDatabase::class.java,
                     "people_database"
-                ).build()
+                ).addCallback(PeopleDatabaseCallback(scope)).build()
                 INSTANCE = instance
                 return instance
             }
@@ -40,7 +40,7 @@ abstract class PeopleRoomDatabase: RoomDatabase() {
 
     private class PeopleDatabaseCallback(private val scope: CoroutineScope): RoomDatabase.Callback() {
 
-        override fun onOpen(db: SupportSQLiteDatabase) {
+        override fun onCreate(db: SupportSQLiteDatabase) {
             super.onOpen(db)
             INSTANCE?.let { database ->
                 scope.launch {
