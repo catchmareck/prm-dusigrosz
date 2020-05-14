@@ -20,7 +20,7 @@ abstract class PeopleRoomDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: PeopleRoomDatabase? = null
 
-        fun getDatabase(context: Context, scope: CoroutineScope): PeopleRoomDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope?): PeopleRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -38,10 +38,13 @@ abstract class PeopleRoomDatabase: RoomDatabase() {
         }
     }
 
-    private class PeopleDatabaseCallback(private val scope: CoroutineScope): RoomDatabase.Callback() {
+    private class PeopleDatabaseCallback(private val scope: CoroutineScope?): RoomDatabase.Callback() {
 
         override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
+            super.onCreate(db)
+
+            if (scope == null) return
+
             INSTANCE?.let { database ->
                 scope.launch {
                     populateDatabase(database.peopleDao())

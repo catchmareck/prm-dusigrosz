@@ -26,8 +26,8 @@ class PeopleRepository(private val peopleDao: PeopleDao) {
         return livePeople.value!!.sumByDouble { person: Person -> person.debt }
     }
 
-    suspend fun addPerson(person: Person) {
-        peopleDao.addPerson(person)
+    suspend fun addPerson(person: Person): Long {
+        return peopleDao.addPerson(person)
     }
 
     suspend fun updatePerson(currentPerson: Person, newName: String, newDebt: Double) {
