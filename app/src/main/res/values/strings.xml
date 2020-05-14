@@ -21,4 +21,6 @@
     <string name="form_clear_dialog_message">Chcesz porzucić zmiany?</string>
     <string name="form_clear_dialog_positive_text">Tak</string>
     <string name="form_clear_dialog_negative_text">Nie</string>
+
+    <string name="person_notify_message">Cześć, %1$s! Wisisz mi %2$szł kolego.</string>
 </resources>

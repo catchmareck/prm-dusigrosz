@@ -1,6 +1,6 @@
 package com.example.dusigrosz.ui.edit
 
-import android.app.AlertDialog
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -72,6 +72,7 @@ class EditFragment : Fragment() {
 
         bindSaveButtonEvents()
         bindClearButtonEvents()
+        bindNotifyButtonEvents()
     }
 
     private fun setStrategy(action: PersonAction, view: View) {
@@ -88,6 +89,19 @@ class EditFragment : Fragment() {
     private fun bindClearButtonEvents() {
         buttonClear.setOnClickListener {
             strategy.clearForm()
+        }
+    }
+
+    private fun bindNotifyButtonEvents() {
+        buttonNotify.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.person_notify_message, viewModel.person.name, viewModel.person.debt.toString()))
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
         }
     }
 }
