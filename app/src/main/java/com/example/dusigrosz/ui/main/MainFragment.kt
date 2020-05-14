@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import com.example.dusigrosz.EditActivity
 import com.example.dusigrosz.R
 import com.example.dusigrosz.ui.PersonAction
+import com.example.dusigrosz.entities.Person
 import kotlin.collections.ArrayList
 
 class MainFragment : Fragment() {
@@ -48,15 +49,15 @@ class MainFragment : Fragment() {
 
         debtSumText = view.findViewById(R.id.debt_sum_text)
 
-        initializeListView(view)
-        setDebtSumText()
         bindListViewEvents(view)
         bindAddPersonButtonEvents(view)
 
         viewModel.getPeople().observe(
             viewLifecycleOwner,
-            Observer<ArrayList<Person>> {
-                arrayAdapter.notifyDataSetChanged()
+            Observer {
+                if(::arrayAdapter.isInitialized)
+                    arrayAdapter.notifyDataSetChanged()
+
                 setDebtSumText()
                 initializeListView(view)
             }

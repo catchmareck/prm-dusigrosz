@@ -1,39 +1,33 @@
 package com.example.dusigrosz.ui.main
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.dusigrosz.PeopleRepository
-import java.util.ArrayList
+import com.example.dusigrosz.db.PeopleRoomDatabase
+import com.example.dusigrosz.entities.Person
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val peopleRepository = PeopleRepository.getInstance()
+    private val peopleRepository: PeopleRepository
 
-    fun getPeople(): LiveData<ArrayList<Person>> {
-        return peopleRepository.getPeople()
+    init {
+        val peopleDao = PeopleRoomDatabase.getDatabase(application, viewModelScope).peopleDao()
+        peopleRepository = PeopleRepository.getInstance(peopleDao)
     }
 
-    fun getPerson(position: Int): Person {
-        return peopleRepository.getPerson(position)
+    fun getPeople(): LiveData<MutableList<Person>> {
+        return peopleRepository.getPeople()
     }
 
     fun getDebtSum(): Double {
         return peopleRepository.getDebtSum()
     }
 
-    fun addPerson(name: String, debt: Double) {
-        peopleRepository.addPerson(name, debt)
-    }
-
-    fun addPerson(person: Person) {
-        peopleRepository.addPerson(person)
-    }
-
-    fun deletePerson(position: Int) {
-        peopleRepository.deletePerson(position)
-    }
-
-    fun deletePerson(person: Person) {
+    fun deletePerson(person: Person) = viewModelScope.launch(Dispatchers.IO) {
         peopleRepository.deletePerson(person)
     }
 }

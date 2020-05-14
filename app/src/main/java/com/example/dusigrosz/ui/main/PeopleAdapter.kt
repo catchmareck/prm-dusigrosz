@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.dusigrosz.R
+import com.example.dusigrosz.entities.Person
 
 class PeopleAdapter(
     private val context: Context,

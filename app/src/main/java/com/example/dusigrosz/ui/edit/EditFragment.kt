@@ -14,7 +14,7 @@ import com.example.dusigrosz.ui.PersonAction
 import com.example.dusigrosz.ui.edit.strategy.CreateEditorStrategy
 import com.example.dusigrosz.ui.edit.strategy.EditorStrategy
 import com.example.dusigrosz.ui.edit.strategy.UpdateEditorStrategy
-import com.example.dusigrosz.ui.main.Person
+import com.example.dusigrosz.entities.Person
 
 class EditFragment : Fragment() {
 

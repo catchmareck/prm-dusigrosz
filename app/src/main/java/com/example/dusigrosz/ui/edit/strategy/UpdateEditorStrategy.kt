@@ -5,7 +5,7 @@ import android.view.View
 import com.example.dusigrosz.R
 import com.example.dusigrosz.ui.edit.EditFragment
 import com.example.dusigrosz.ui.edit.EditViewModel
-import com.example.dusigrosz.ui.main.Person
+import com.example.dusigrosz.entities.Person
 
 class UpdateEditorStrategy(view: View, fragment: EditFragment, viewModel: EditViewModel) : EditorStrategy(view, fragment, viewModel) {
 
